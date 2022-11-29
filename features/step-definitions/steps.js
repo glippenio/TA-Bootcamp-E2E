@@ -3,29 +3,15 @@ const { Given, When, Then } = require('@wdio/cucumber-framework');
 Given("I am on the home page", async () => {
     await browser.url(`https://www.newegg.com`);
     await browser.pause(5000)
-
 });
 
 Given("Close the promo banner if it appears", async () => {
-    // const bunnerButton=await $(`//*[@id="modal-Website"]/div[2]/div/button`); 
-    // #modal-Website > div.modal-dialog.modal-dialog-centered > div > button
     const bunnerButton=await $(`#modal-Website > div.modal-dialog.modal-dialog-centered > div > button`); 
     const logo = await $(` #app > header > div.page-content-inner > div:nth-child(1) > div.section-left.auto-flex > div.header2021-logo > a > img`)
-    // try {
-    //     bunnerButton.click()
-    //     } catch (result) {
-    // result = false 
-    // return result } 
     try {
         await logo.click()
         } catch {
         bunnerButton.click()}
-
-    // if ( await expect(bunnerButton).toBeExisting() ) {
-    //     bunnerButton.click()
-    // } else {
-    //     return true
-    // }
 });
 
 When("Entry the word Windows in the search bar", async () => {
